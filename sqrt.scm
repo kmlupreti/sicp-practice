@@ -13,18 +13,18 @@
   (/ (+ x y) 2))
 
 ; function to improve the guess
-(define (improve guess n)
+(define (improve guess)
   (average guess (/ n guess)))
 
 ; function to check if square root is within given error margin
-(define (is-good-enough? guess n)
+(define (is-good-enough? guess)
   (< (abs (- (square guess) n)) 0.001))
 
 ; function to recursively find square root until its good enough
-(define (square-iter guess n)
-    (if (is-good-enough? guess n)
+(define (square-iter guess)
+    (if (is-good-enough? guess)
         guess
-        (square-iter (improve guess n) n)))
+        (square-iter (improve guess))))
 
 ; Start with an initial guess of 1.0
-(square-iter 1.0 n)) 
+(square-iter 1.0)) 
