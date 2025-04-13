@@ -5,14 +5,12 @@
 ; calculated .This  process continues until the guess is within specified
 ; error margin.In this case, initial guess is 1.0 and error margin is 0.001
 
-;import modules for necessary operations
-(load "abs.scm")
-(load "square.scm")
-(load "average.scm")
-
 ; function to check if square root is within given error margin
 (define (is-good-enough? guess n)
   (< (abs (- (square guess) n)) 0.001))
+
+(define (average x y)
+  (/ (+ x y) 2))
 
 ; improve the guess
 (define (improve guess n)
@@ -22,9 +20,7 @@
 (define (square-iter guess n)
     (if (is-good-enough? guess n)
         guess
-        (square-iter (improve guess n) n)
-    )
-)
+        (square-iter (improve guess n) n)))
 
 ; entry point to find square root
 (define (sqrt n)
