@@ -9,7 +9,6 @@
 (load "abs.scm")
 (load "square.scm")
 (load "average.scm")
-(load "new-if.scm")
 
 ; function to check if square root is within given error margin
 (define (is-good-enough? guess n)
@@ -21,7 +20,7 @@
 
 ; function to recursively find square root until its good enough
 (define (square-iter guess n)
-    (new-if (is-good-enough? guess n)
+    (if (is-good-enough? guess n)
         guess
         (square-iter (improve guess n) n)
     )
