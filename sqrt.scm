@@ -1,14 +1,15 @@
 ; program to find square root of a given number using newton's method.
-; It takes a initial guess and check if its is good enough guess and
-; improves it if its not good enough. The guess is improved by averaging
-; current guess and n where n is the radicand whose square root is to be
-; calculated .This  process continues until.The guess is within specified
-; error margin. Here, initial guess is 1.0 and error margin is 0.001
+; It takes a initial guess and checks if its good enough guess and
+; improves it if its not. The guess is improved by averaging current
+; guess and n/guess where n is the radicand whose square root is to be
+; calculated .This  process continues until the guess is within specified
+; error margin.In this case, initial guess is 1.0 and error margin is 0.001
 
 ;import modules for necessary operations
 (load "abs.scm")
 (load "square.scm")
 (load "average.scm")
+(load "new-if.scm")
 
 ; function to check if square root is within given error margin
 (define (is-good-enough? guess n)
@@ -20,7 +21,7 @@
 
 ; function to recursively find square root until its good enough
 (define (square-iter guess n)
-    (if (is-good-enough? guess n)
+    (new-if (is-good-enough? guess n)
         guess
         (square-iter (improve guess n) n)
     )
